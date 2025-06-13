@@ -1,3 +1,11 @@
+'''
+Version 2
+Change log:
+    - Updated how the temperature and time data is imported (using pandas - column headers)
+    - fixed bug with selecting temperature
+
+'''
+
 import tkinter as tk
 from tkinter import filedialog
 import matplotlib.pyplot as plt
@@ -156,28 +164,6 @@ class GraphApp:
                 self.temperature = self.temperature[5:]
                 self.time = self.time[5:]
                 
-                
-                '''
-                self.temperature.extend(file["T1"].tolist())
-                self.time.extend(file["t"].tolist())
-                '''
-                
-                
-                '''
-                # Append the time and temperature to the corresponding array
-                for column in file:
-                    
-
-                    if len(column) == 3:
-                        value = str(column.items())
-                        string = value.split("\'")
-                        self.time.append(string[19])
-                        self.temperature.append(string[15])
-
-                '''
-                # Remove first 5 elements (header + sometimes non-measurement data)
-                #self.temperature = self.temperature[5:]
-                #self.time = self.time[5:]
 
                 # Convert lists to numpy arrays
                 self.temperature = np.asarray(self.temperature, dtype=float)
